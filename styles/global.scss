@@ -1,0 +1,80 @@
+.type {
+    &-normal {
+        background-color: #a8a878;
+    }
+    &-fire {
+        background-color: #f08030;
+    }
+    &-fighting {
+        background-color: #c03028;
+    }
+    &-water {
+        background-color: #6890f0;
+    }
+    &-flying {
+        background-color: #a890f0;
+    }
+    &-grass {
+        background-color: #78c850;
+    }
+    &-poison {
+        background-color: #a040a0;
+    }
+    &-electric {
+        background-color: #f8d030;
+    }
+    &-ground {
+        background-color: #e0c068;
+    }
+    &-psychic {
+        background-color: #f85888;
+    }
+    &-rock {
+        background-color: #b8a038;
+    }
+    &-ice {
+        background-color: #98d8d8;
+    }
+    &-bug {
+        background-color: #a8b820;
+    }
+    &-dragon {
+        background-color: #7038f8;
+    }
+    &-ghost {
+        background-color: #705898;
+    }
+    &-dark {
+        background-color: #705848;
+    }
+    &-steel {
+        background-color: #b8b8d0;
+    }
+    &-fairy {
+        background-color: #ee99ac;
+    }
+}
+
+.tag-stats {
+    .HP {
+        background-color: #df2140;
+    }
+    .ATK {
+        background-color: #ff994d;
+    }
+    .DEF {
+        background-color: #eecd3d;
+    }
+    .SpA {
+        background-color: #85ddff;
+    }
+    .SpD {
+        background-color: #96da83;
+    }
+    .SPD {
+        background-color: #fb94a8;
+    }
+    .TDT {
+        background-color: blue;
+    }
+}

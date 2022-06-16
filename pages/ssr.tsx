@@ -1,9 +1,9 @@
 import axios from "axios";
 import type { NextPage } from "next";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useQueries, useQuery } from "react-query";
 import { urlListStringApi } from "../api/pokemon";
-import { useApp } from "../app.context";
 import CardLoading from "../components/CardLoading";
 import CardPokemon from "../components/CardPokemon";
 import DetailPokemon from "../components/DetailPokemon";
@@ -15,9 +15,7 @@ import { limitDefault } from "../config";
 import { Pokemon, Pokemons, ResultsPokemons } from "../types/pokemon";
 
 // type Props = { data: Pokemons };
-const Home: NextPage = () => {
-  const { idPokemonDetail, setIdPokemonDetail, removeIdPokemonDetail } = useApp();
-  const [isOpenDetail, setIsOpenDetail] = useState(false);
+const ssr: NextPage = () => {
   const [limit, setLimit] = useState(limitDefault);
   const [renderLoading, setRenderLoading] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -111,18 +109,18 @@ const Home: NextPage = () => {
           }
           const { id, sprites, name, types, species } = pokemon;
           return (
-            <CardPokemon
-              key={id}
-              id={id}
-              image={sprites?.other["official-artwork"]?.front_default as string}
-              name={name}
-              types={types}
-              url_species={species.url}
-              onClickDetail={() => {
-                setIsOpenDetail(true);
-                setIdPokemonDetail(id);
-              }}
-            />
+            <Link key={id} href={`/pokemon/${id}`}>
+              <a>
+                <CardPokemon
+                  id={id}
+                  image={sprites?.other["official-artwork"]?.front_default as string}
+                  name={name}
+                  types={types}
+                  url_species={species.url}
+                  onClickDetail={() => {}}
+                />
+              </a>
+            </Link>
           );
         })}
       </div>
@@ -130,7 +128,6 @@ const Home: NextPage = () => {
         <Button title="Trước" onClick={handlePrevious} disabled={!hasPreviousPage} loading={isFetching} />
         <Button title="Sau" onClick={handleNext} disabled={!hasNextPage} loading={isFetching} />
       </div>
-      <DetailPokemon isOpen={isOpenDetail} setIsOpen={setIsOpenDetail} />
     </Layout>
   );
 };
@@ -142,4 +139,4 @@ const Home: NextPage = () => {
 //   };
 // }
 
-export default Home;
+export default ssr;
