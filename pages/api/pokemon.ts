@@ -1,11 +1,10 @@
 import axios from "axios";
-import Cors from "cors";
 import { matchSorter } from "match-sorter";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { limitDefault } from "../../config";
 import { Pokemons, ResultsPokemons } from "../../types/pokemon";
 import cacheUtil from "../../utils/cache.util";
-import { initMiddleware, isEmpty } from "../../utils/util";
+import { isEmpty } from "../../utils/util";
 import { KEY_CACHE_ALL_POKEMON } from "./../../contant";
 
 interface Query {
