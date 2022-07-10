@@ -1,11 +1,11 @@
 import axios from "axios";
 import { matchSorter } from "match-sorter";
 import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
 import { limitDefault } from "../../config";
 import { Pokemons, ResultsPokemons } from "../../types/pokemon";
+import cacheUtil from "../../utils/cache.util";
 import { isEmpty } from "../../utils/util";
+import { KEY_CACHE_ALL_POKEMON } from "../../contant";
 
 interface Query {
   limit: any;
@@ -36,10 +36,18 @@ export const handleQuery = async (query: Query) => {
       offsetQuery = 0;
     }
   }
-  const filePath = path.join(process.cwd(), "cache.json");
-  const jsonData = fs.readFileSync(filePath, "utf8");
-  const list: { value: Pokemons } = JSON.parse(jsonData);
-  let { results } = list?.value;
+  let list: Pokemons | null | undefined = cacheUtil.getSync(KEY_CACHE_ALL_POKEMON);
+  if (list === null || list === undefined) {
+    const response = await axios.get<Pokemons>(`${process.env.NEXT_PUBLIC_LINK_API}/pokemon/?offset=0&limit=1`);
+    const { data: listPokemon } = response;
+    const { count } = listPokemon;
+    const allPokemonResponse = await axios.get<Pokemons>(`${process.env.NEXT_PUBLIC_LINK_API}/pokemon/?offset=0&limit=${count}`);
+    const { data: listAllPokemon } = allPokemonResponse;
+    cacheUtil.setSync(KEY_CACHE_ALL_POKEMON, listAllPokemon);
+    list = listAllPokemon;
+  }
+  let { results } = list;
+
   results = filterListBySearch(results, searchQuery);
   return listByLimitOffset(results, limitQuery, offsetQuery);
 };

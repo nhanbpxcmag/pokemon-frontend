@@ -1,4 +1,6 @@
 import axios from "axios";
+import fs from "fs";
+import path from "path";
 import { NextPage } from "next";
 import { Pokemons } from "../types/pokemon";
 import Layout from "../components/Layout";
@@ -22,7 +24,9 @@ export async function getServerSideProps() {
   const { count } = listPokemon;
   const allPokemonResponse = await axios.get<Pokemons>(`${process.env.NEXT_PUBLIC_LINK_API}/pokemon/?offset=0&limit=${count}`);
   const { data: listAllPokemon } = allPokemonResponse;
-  cacheUtil.setSync(KEY_CACHE_ALL_POKEMON, listAllPokemon);
+  // cacheUtil.setSync(KEY_CACHE_ALL_POKEMON, listAllPokemon);
+  const filePath = path.join(process.cwd(), "cache.json");
+  fs.writeFileSync(filePath, JSON.stringify({ value: listAllPokemon }));
   return {
     props: { data: listAllPokemon }, // will be passed to the page component as props
   };
