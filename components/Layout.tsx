@@ -15,6 +15,14 @@ const Layout = (props: Props) => {
       <Head>
         <title>{title}</title>
         <meta name="description" content="pokemon wiki" />
+        <meta name="description" content="Danh sách pokemon" />
+        <meta name="description" content="Danh sách Pokémon" />
+        <meta name="description" content="pokeapi" />
+        <meta name="description" content="pokemon" />
+        <meta name="description" content="pikachu" />
+        <meta name="description" content="Pokédex" />
+        <meta name="description" content="Pokémon" />
+        <meta name="description" content="Pokémon wiki" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="icon" href="/icons/pokeball.png" />
