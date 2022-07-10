@@ -14,14 +14,11 @@ const Layout = (props: Props) => {
     <div className="mx-auto">
       <Head>
         <title>{title}</title>
-        <meta name="description" content="pokemon wiki" />
-        <meta name="description" content="Danh sách pokemon" />
-        <meta name="description" content="Danh sách Pokémon" />
-        <meta name="description" content="pokeapi" />
-        <meta name="description" content="pokemon" />
-        <meta name="description" content="pikachu" />
-        <meta name="description" content="Pokédex" />
-        <meta name="description" content="Pokémon" />
+        <meta name="og:description" content="Danh sách Pokémon" />
+        <meta name="og:title" content="Pokédex" />
+        <meta name="og:site_name" content="pokemon" />
+        <meta name="news_keywords" content="pokeapi" />
+        <meta name="keywords" content="Pokémon" />
         <meta name="description" content="Pokémon wiki" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
