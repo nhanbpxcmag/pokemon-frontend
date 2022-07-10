@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Scrollbars } from "react-custom-scrollbars";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 interface Props {
   children: ReactNode | undefined;
