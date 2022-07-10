@@ -1,5 +1,5 @@
 export const initCache = {
-  basePath: "/cachePokemon", // Optional. Path where cache files are stored (default).
+  basePath: "./cachePokemon", // Optional. Path where cache files are stored (default).
   ns: "my-namespace", // Optional. A grouping namespace for items.
 };
 
